@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luiz Carlos Brandão | Músico Profissional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .instrument-card {
+            transition: all 0.3s ease;
+        }
+        
+        .instrument-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .language-selector {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        .hidden-language {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Language Selector -->
+    <div class="language-selector bg-white shadow-lg rounded-full p-2">
+        <button id="pt-btn" class="bg-amber-500 text-white px-4 py-2 rounded-full font-medium">PT</button>
+        <button id="en-btn" class="px-4 py-2 rounded-full font-medium">EN</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-black text-white fixed w-full z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold font-serif">
+                    <span class="text-amber-500">LC</span> Brandão
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-amber-500 transition" data-pt="Início" data-en="Home">Início</a>
+                    <a href="#about" class="hover:text-amber-500 transition" data-pt="Sobre" data-en="About">Sobre</a>
+                    <a href="#instruments" class="hover:text-amber-500 transition" data-pt="Instrumentos" data-en="Instruments">Instrumentos</a>
+                    <a href="#gallery" class="hover:text-amber-500 transition" data-pt="Galeria" data-en="Gallery">Galeria</a>
+                    <a href="#contact" class="hover:text-amber-500 transition" data-pt="Contato" data-en="Contact">Contato</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden bg-black py-4 px-6 mt-2 rounded-lg">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="hover:text-amber-500 transition" data-pt="Início" data-en="Home">Início</a>
+                    <a href="#about" class="hover:text-amber-500 transition" data-pt="Sobre" data-en="About">Sobre</a>
+                    <a href="#instruments" class="hover:text-amber-500 transition" data-pt="Instrumentos" data-en="Instruments">Instrumentos</a>
+                    <a href="#gallery" class="hover:text-amber-500 transition" data-pt="Galeria" data-en="Gallery">Galeria</a>
+                    <a href="#contact" class="hover:text-amber-500 transition" data-pt="Contato" data-en="Contact">Contato</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero min-h-screen flex items-center justify-center text-white pt-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6" data-pt="Luiz Carlos Brandão" data-en="Luiz Carlos Brandão">Luiz Carlos Brandão</h1>
+            <h2 class="text-2xl md:text-3xl mb-8" data-pt="Músico Profissional & Multi-Instrumentista" data-en="Professional Musician & Multi-Instrumentalist">Músico Profissional & Multi-Instrumentista</h2>
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <span class="bg-amber-500 text-black px-4 py-2 rounded-full font-medium" data-pt="Violão" data-en="Guitar">Violão</span>
+                <span class="bg-amber-500 text-black px-4 py-2 rounded-full font-medium" data-pt="Teclado" data-en="Keyboard">Teclado</span>
+                <span class="bg-amber-500 text-black px-4 py-2 rounded-full font-medium" data-pt="Baixo" data-en="Bass">Baixo</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#contact" class="bg-amber-500 hover:bg-amber-600 text-black font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105" data-pt="Agende uma aula" data-en="Book a lesson">
+                    Agende uma aula
+                </a>
+                <a href="#gallery" class="border-2 border-white hover:bg-white hover:text-black font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105" data-pt="Conheça meu trabalho" data-en="See my work">
+                    Conheça meu trabalho
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-pt="Sobre Mim" data-en="About Me">Sobre Mim</h2>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1549213783-8284d0336c4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" 
+                         alt="Luiz Carlos Brandão tocando violão" 
+                         class="rounded-lg shadow-xl w-full h-auto max-h-[500px] object-cover">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6" data-pt="30+ Anos de Excelência Musical" data-en="30+ Years of Musical Excellence">30+ Anos de Excelência Musical</h3>
+                    <p class="text-gray-700 mb-4" data-pt="Com mais de três décadas de experiência profissional, dediquei minha vida a dominar múltiplos instrumentos e compartilhar minha paixão pela música com públicos em todo o mundo." data-en="With over three decades of professional experience, I've dedicated my life to mastering multiple instruments and sharing my passion for music with audiences worldwide.">
+                        Com mais de três décadas de experiência profissional, dediquei minha vida a dominar múltiplos instrumentos e compartilhar minha paixão pela música com públicos em todo o mundo.
+                    </p>
+                    <p class="text-gray-700 mb-6" data-pt="Minha jornada começou aos 12 anos quando peguei um violão pela primeira vez. Desde então, expandi meu repertório para incluir teclado e baixo elétrico, atuando em inúmeros palcos, estúdios de gravação e colaborando com artistas renomados em diversos gêneros musicais." data-en="My journey began at age 12 when I first picked up a guitar. Since then, I've expanded my repertoire to include keyboard and electric bass, performing in countless venues, recording studios, and collaborating with renowned artists across various genres.">
+                        Minha jornada começou aos 12 anos quando peguei um violão pela primeira vez. Desde então, expandi meu repertório para incluir teclado e baixo elétrico, atuando em inúmeros palcos, estúdios de gravação e colaborando com artistas renomados em diversos gêneros musicais.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-amber-500 mr-2 text-xl"></i>
+                            <span data-pt="500+ Shows" data-en="500+ Performances">500+ Shows</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-amber-500 mr-2 text-xl"></i>
+                            <span data-pt="50+ Gravações" data-en="50+ Recordings">50+ Gravações</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-amber-500 mr-2 text-xl"></i>
+                            <span data-pt="10+ Anos Ensinando" data-en="10+ Years Teaching">10+ Anos Ensinando</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-amber-500 mr-2 text-xl"></i>
+                            <span data-pt="Vários Prêmios" data-en="Multiple Awards">Vários Prêmios</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="inline-block bg-black hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-full transition duration-300" data-pt="Saiba Mais" data-en="Learn More">
+                        Saiba Mais
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instruments Section -->
+    <section id="instruments" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-pt="Meus Instrumentos" data-en="My Instruments">Meus Instrumentos</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Acoustic Guitar Card -->
+                <div class="instrument-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Violão" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-guitar text-amber-500 text-3xl mr-4"></i>
+                            <h3 class="text-2xl font-bold" data-pt="Violão" data-en="Acoustic Guitar">Violão</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4" data-pt="Especializado em técnicas de fingerstyle e clássico, trago calor e emoção para cada performance. Meu repertório abrange desde o folk tradicional até arranjos contemporâneos." data-en="Specializing in fingerstyle and classical techniques, I bring warmth and emotion to every performance. My repertoire spans from traditional folk to contemporary arrangements.">
+                            Especializado em técnicas de fingerstyle e clássico, trago calor e emoção para cada performance. Meu repertório abrange desde o folk tradicional até arranjos contemporâneos.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-music text-amber-500 mr-2"></i>
+                                <span data-pt="Especialista em fingerstyle" data-en="Fingerstyle specialist">Especialista em fingerstyle</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-music text-amber-500 mr-2"></i>
+                                <span data-pt="Arranjos personalizados" data-en="Custom arrangements">Arranjos personalizados</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-music text-amber-500 mr-2"></i>
+                                <span data-pt="30+ anos de experiência" data-en="30+ years experience">30+ anos de experiência</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white font-medium py-2 px-4 rounded-full transition duration-300" data-pt="Agende Aula" data-en="Book Lesson">
+                            Agende Aula
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Keyboard Card -->
+                <div class="instrument-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Teclado" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-keyboard text-amber-500 text-3xl mr-4"></i>
+                            <h3 class="text-2xl font-bold" data-pt="Teclado" data-en="Keyboard">Teclado</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4" data-pt="Do jazz ao clássico, minhas performances no teclado adicionam profundidade e sofisticação a qualquer contexto musical. Especializado em performances solo e acompanhamento em conjunto." data-en="From jazz to classical, my keyboard performances add depth and sophistication to any musical setting. I specialize in both solo performances and ensemble accompaniment.">
+                            Do jazz ao clássico, minhas performances no teclado adicionam profundidade e sofisticação a qualquer contexto musical. Especializado em performances solo e acompanhamento em conjunto.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-music text-amber-500 mr-2"></i>
+                                <span data-pt="Especialista em jazz" data-en="Jazz expert">Especialista em jazz</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-music text-amber-500 mr-2"></i>
+                                <span data-pt="Sessões em estúdio" data-en="Studio sessions">Sessões em estúdio</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-music text-amber-500 mr-2"></i>
+                                <span data-pt="25+ anos de experiência" data-en="25+ years experience">25+ anos de experiência</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white font-medium py-2 px-4 rounded-full transition duration-300" data-pt="Agende Aula" data-en="Book Lesson">
+                            Agende Aula
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Electric Bass Card -->
+                <div class="instrument-card bg-white rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Baixo Elétrico" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-guitar text-amber-500 text-3xl mr-4"></i>
+                            <h3 class="text-2xl font-bold" data-pt="Baixo Elétrico" data-en="Electric Bass">Baixo Elétrico</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4" data-pt="A base de qualquer grande banda, meu baixo proporciona o groove perfeito. Com experiência em múltiplos estilos, trago energia e precisão para cada performance." data-en="The foundation of any great band, my bass playing provides the perfect groove. With expertise in multiple styles, I bring energy and precision to every performance.">
+                            A base de qualquer grande banda, meu baixo proporciona o groove perfeito. Com experiência em múltiplos estilos, trago energia e precisão para cada performance.
+                        </p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-center">
+                                <i class="fas fa-music text-amber-500 mr-2"></i>
+                                <span data-pt="Especialista em groove" data-en="Groove specialist">Especialista em groove</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-music text-amber-500 mr-2"></i>
+                                <span data-pt="Músico de estúdio" data-en="Session musician">Músico de estúdio</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-music text-amber-500 mr-2"></i>
+                                <span data-pt="20+ anos de experiência" data-en="20+ years experience">20+ anos de experiência</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="inline-block border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white font-medium py-2 px-4 rounded-full transition duration-300" data-pt="Agende Aula" data-en="Book Lesson">
+                            Agende Aula
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-pt="Galeria" data-en="Gallery">Galeria</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Performance ao vivo" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-bold text-lg mb-2" data-pt="Festival de Jazz 2023" data-en="Jazz Festival 2023">Festival de Jazz 2023</h3>
+                        <p class="text-gray-700" data-pt="Performance solo de violão no Festival Internacional de Jazz" data-en="Acoustic guitar solo performance at the International Jazz Festival">Performance solo de violão no Festival Internacional de Jazz</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Sessão de estúdio" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-bold text-lg mb-2" data-pt="Gravação em Estúdio" data-en="Studio Recording Session">Gravação em Estúdio</h3>
+                        <p class="text-gray-700" data-pt="Gravando faixas de teclado para um novo álbum" data-en="Recording keyboard tracks for a new album">Gravando faixas de teclado para um novo álbum</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Ensinando" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-bold text-lg mb-2" data-pt="Workshop" data-en="Masterclass Workshop">Workshop</h3>
+                        <p class="text-gray-700" data-pt="Ensinando técnicas avançadas de baixo para alunos" data-en="Teaching advanced bass techniques to students">Ensinando técnicas avançadas de baixo para alunos</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Performance com banda" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-bold text-lg mb-2" data-pt="Turnê com Os Harmônicos" data-en="Touring with The Harmonics">Turnê com Os Harmônicos</h3>
+                        <p class="text-gray-700" data-pt="Performance de baixo elétrico com minha banda" data-en="Electric bass performance with my touring band">Performance de baixo elétrico com minha banda</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Performance solo" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-bold text-lg mb-2" data-pt="Piano Solo no Teatro Municipal" data-en="Piano Solo at Carnegie Hall">Piano Solo no Teatro Municipal</h3>
+                        <p class="text-gray-700" data-pt="Uma noite memorável de piano clássico" data-en="A memorable evening of classical piano">Uma noite memorável de piano clássico</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="font-bold text-lg mb-2" data-pt="Vídeo de Performance" data-en="Live Performance Video">Vídeo de Performance</h3>
+                        <p class="text-gray-700" data-pt="Assista minha composição original 'Folhas de Outono'" data-en="Watch me perform my original composition 'Autumn Leaves'">Assista minha composição original 'Folhas de Outono'</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full transition duration-300" data-pt="Ver Galeria Completa" data-en="View Full Gallery">
+                    Ver Galeria Completa
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-amber-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-pt="Depoimentos" data-en="Testimonials">Depoimentos</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 text-2xl mr-2">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="text-gray-700 italic" data-pt="O trabalho do Luiz no violão em nosso álbum foi simplesmente mágico. Sua capacidade de capturar emoção através das cordas é incomparável." data-en="Luiz's guitar work on our album was nothing short of magical. His ability to capture emotion through strings is unparalleled.">
+                            "O trabalho do Luiz no violão em nosso álbum foi simplesmente mágico. Sua capacidade de capturar emoção através das cordas é incomparável."
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-bold">Sarah Johnson</h4>
+                            <p class="text-gray-600 text-sm" data-pt="Produtora Musical, Harmony Records" data-en="Music Producer, Harmony Records">Produtora Musical, Harmony Records</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 text-2xl mr-2">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="text-gray-700 italic" data-pt="Como baixista, Luiz traz o groove perfeito para cada sessão. Seu timing e feeling são impecáveis." data-en="As a bass player, Luiz brings the perfect groove to every session. His timing and feel are impeccable.">
+                            "Como baixista, Luiz traz o groove perfeito para cada sessão. Seu timing e feeling são impecáveis."
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-bold">Michael Chen</h4>
+                            <p class="text-gray-600 text-sm" data-pt="Líder de Banda, The Groove Collective" data-en="Band Leader, The Groove Collective">Líder de Banda, The Groove Collective</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 text-2xl mr-2">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="text-gray-700 italic" data-pt="Fazer aulas de teclado com Luiz transformou minha forma de tocar. Seu conhecimento profundo e paciência fazem dele um professor excepcional." data-en="Taking keyboard lessons with Luiz transformed my playing. His deep knowledge and patience make him an exceptional teacher.">
+                            "Fazer aulas de teclado com Luiz transformou minha forma de tocar. Seu conhecimento profundo e paciência fazem dele um professor excepcional."
+                        </p>
+                    </div>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily Rodriguez" class="w-12 h-12 rounded-full mr-4 object-cover">
+                        <div>
+                            <h4 class="font-bold">Emily Rodriguez</h4>
+                            <p class="text-gray-600 text-sm" data-pt="Aluna" data-en="Student">Aluna</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16" data-pt="Vamos Fazer Música Juntos" data-en="Let's Make Music Together">Vamos Fazer Música Juntos</h2>
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6" data-pt="Contratações & Informações" data-en="Booking & Inquiries">Contratações & Informações</h3>
+                    <p class="mb-8" data-pt="Interessado em contratar uma performance, sessão de estúdio ou aula particular? Preencha o formulário e eu retornarei em até 48 horas." data-en="Interested in booking a performance, studio session, or private lesson? Fill out the form and I'll get back to you within 48 hours.">
+                        Interessado em contratar uma performance, sessão de estúdio ou aula particular? Preencha o formulário e eu retornarei em até 48 horas.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="text-amber-500 mr-4 mt-1">
+                                <i class="fas fa-map-marker-alt text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1" data-pt="Localização" data-en="Location">Localização</h4>
+                                <p data-pt="São Paulo, SP" data-en="São Paulo, SP">São Paulo, SP</p>
+                                <p data-pt="Disponível para viagens" data-en="Available for travel worldwide">Disponível para viagens</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-amber-500 mr-4 mt-1">
+                                <i class="fas fa-envelope text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Email</h4>
+                                <p>luiz@brandaomusic.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-amber-500 mr-4 mt-1">
+                                <i class="fas fa-phone-alt text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1" data-pt="Telefone" data-en="Phone">Telefone</h4>
+                                <p>(11) 98765-4321</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4" data-pt="Me Siga" data-en="Follow Me">Me Siga</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-white hover:text-amber-500 transition">
+                                <i class="fab fa-facebook-f text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-amber-500 transition">
+                                <i class="fab fa-instagram text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-amber-500 transition">
+                                <i class="fab fa-youtube text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-amber-500 transition">
+                                <i class="fab fa-spotify text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2 font-medium" data-pt="Seu Nome" data-en="Your Name">Seu Nome</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 font-medium" data-pt="Email" data-en="Email Address">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div>
+                            <label for="subject" class="block mb-2 font-medium" data-pt="Assunto" data-en="Subject">Assunto</label>
+                            <select id="subject" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <option value="" data-pt="Selecione uma opção" data-en="Select an option">Selecione uma opção</option>
+                                <option value="performance" data-pt="Contratação para Show" data-en="Performance Booking">Contratação para Show</option>
+                                <option value="session" data-pt="Sessão de Estúdio" data-en="Studio Session">Sessão de Estúdio</option>
+                                <option value="lesson" data-pt="Aula Particular" data-en="Private Lesson">Aula Particular</option>
+                                <option value="other" data-pt="Outro Assunto" data-en="Other Inquiry">Outro Assunto</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2 font-medium" data-pt="Sua Mensagem" data-en="Your Message">Sua Mensagem</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-bold py-4 px-6 rounded-lg transition duration-300" data-pt="Enviar Mensagem" data-en="Send Message">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-2xl font-bold font-serif mb-2">
+                        <span class="text-amber-500">LC</span> Brandão
+                    </div>
+                    <p data-pt="Músico Profissional & Multi-Instrumentista" data-en="Professional Musician & Multi-Instrumentalist">Músico Profissional & Multi-Instrumentista</p>
+                </div>
+                <div class="flex flex-col items-center md:items-end">
+                    <p class="mb-4">© 2023 Luiz Carlos Brandão. <span data-pt="Todos os direitos reservados." data-en="All rights reserved.">Todos os direitos reservados.</span></p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="hover:text-amber-500 transition" data-pt="Política de Privacidade" data-en="Privacy Policy">Política de Privacidade</a>
+                        <a href="#" class="hover:text-amber-500 transition" data-pt="Termos de Serviço" data-en="Terms of Service">Termos de Serviço</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language switching functionality
+        const ptBtn = document.getElementById('pt-btn');
+        const enBtn = document.getElementById('en-btn');
+        
+        function setLanguage(lang) {
+            // Update button styles
+            if (lang === 'pt') {
+                ptBtn.classList.add('bg-amber-500', 'text-white');
+                ptBtn.classList.remove('text-black');
+                enBtn.classList.remove('bg-amber-500', 'text-white');
+                enBtn.classList.add('text-black');
+            } else {
+                enBtn.classList.add('bg-amber-500', 'text-white');
+                enBtn.classList.remove('text-black');
+                ptBtn.classList.remove('bg-amber-500', 'text-white');
+                ptBtn.classList.add('text-black');
+            }
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-pt], [data-en]').forEach(element => {
+                if (element.tagName === 'OPTION') {
+                    // Special handling for select options
+                    if (element.hasAttribute('selected')) {
+                        element.removeAttribute('selected');
+                    }
+                    
+                    if (lang === 'pt') {
+                        element.textContent = element.getAttribute('data-pt');
+                    } else {
+                        element.textContent = element.getAttribute('data-en');
+                    }
+                    
+                    // Re-select the option if it was selected before
+                    if (element.value === document.getElementById('subject').value) {
+                        element.setAttribute('selected', 'selected');
+                    }
+                } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    // Skip input placeholders for now
+                    return;
+                } else {
+                    if (lang === 'pt') {
+                        element.textContent = element.getAttribute('data-pt') || element.textContent;
+                    } else {
+                        element.textContent = element.getAttribute('data-en') || element.textContent;
+                    }
+                }
+            });
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+        }
+        
+        ptBtn.addEventListener('click', () => setLanguage('pt'));
+        enBtn.addEventListener('click', () => setLanguage('en'));
+        
+        // Set default language to Portuguese
+        setLanguage('pt');
+
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Form submission (simulated)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const lang = document.documentElement.lang.includes('pt') ? 'pt' : 'en';
+            const message = lang === 'pt' 
+                ? 'Obrigado pela sua mensagem! Entrarei em contato em breve.' 
+                : 'Thank you for your message! I will get back to you soon.';
+            alert(message);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
